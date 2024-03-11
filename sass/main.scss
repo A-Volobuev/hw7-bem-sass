@@ -1,0 +1,691 @@
+@import './utils/variables';
+
+@import'./components/logo';
+@import'./components/button';
+@import'./components/social';
+@import'./components/modal-imput';
+@import'./components/unactive-buttons';
+
+// Подключаю изображения бг сюда
+$main-background-image: url(../images/bg.webp); 
+
+$modal-unactive-check: url(../images/modal-form/check-icon.svg);
+$modal-active-check: url(../images/modal-form/check-icon-active.svg);
+
+// ---------------------------------------------------------------Общие настройки---------------------------------------------------------------
+body{
+    font-family: Roboto, sans-serif;
+    color: $color-title;
+    font-size: 14px;
+    font-weight: 400;
+} 
+.container{
+    max-width: 1200px;
+    box-sizing: content-box;
+    margin: 0px auto;
+}
+
+
+// ---------------------------------------------------------------header---------------------------------------------------------------// ---------------------------------------------------------------Заголовок---------------------------------------------------------------
+.header {
+    border-bottom: 0.5px solid #ECECEC;
+}
+.header__container {
+    display: flex;
+    align-items: center;
+}
+.header__logo{
+    margin: 0px 91px 0px 0px;
+    padding: 20px 0px;
+}
+.header__nav {
+    display: flex;
+    gap: 50px;
+    font-weight: $font-weight-subtitle;
+    line-height:$line-height-submain;
+
+    
+    &-item{
+        padding: 27.5px 0px 27.5px 0px;
+
+        transition: $animation;
+    }
+
+    &-item:hover, &-item:focus{
+        color: $color-brand;
+    }
+}
+.header__nav .link{
+    display: block;
+}
+.header__action {
+    position: relative;
+    color: $color-brand;
+
+    &::after{
+        content: "";
+        left: 0;
+        bottom: 0;
+        display: block;
+        border-bottom: 4px solid $color-brand;
+        border-radius: 2px;
+        width: 100%;
+        position: absolute;
+    }
+}
+.header__contacts {
+    display: flex;
+    margin-left: auto;
+    gap: 50px;
+}
+.mail{
+    display: block;
+    width: 16px; 
+    height: 12px;
+}
+.contacts__link {
+    display: flex;
+    align-items: center;
+
+    fill: $color-subtitle;
+    color: $color-subtitle;
+    gap: 10px;
+    font-weight: $font-weight-subtitle;
+    line-height:$line-height-submain;
+
+    transition: $animation;
+
+    &:hover, &:focus{
+        fill: $color-brand;
+        color: $color-brand;
+    }
+}
+.contacts__icon {
+    width: 16px;
+    height: 12px;
+}
+
+
+// ---------------------------------------------------------------Главная страница---------------------------------------------------------------
+.main{
+    padding: 200px 0px 210px 0px;
+    background-image: $main-background-image;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 71.2px;
+        left: 0;
+        width: 100%;
+        height: 610px;
+        background-color: rgba(47, 48, 58, 0.5);
+    }
+}
+.main__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+.main__title{
+    max-width: 696px;
+    text-transform: uppercase;
+    display:block;
+    text-align: center;
+    z-index: 0;
+
+    font-size: 44px;
+    font-weight: 900 ;
+    line-height: 1.36;
+
+    color:$color-white;
+}
+.main__button {
+    display:block;
+    padding: 10px 32px;
+    margin-top: 30px;
+    z-index: 0;
+}
+
+
+// ---------------------------------------------------------------Блок edge---------------------------------------------------------------
+.section__edge{
+    padding: 94px 0px;
+}
+.edge__list{
+    display: flex;
+    align-items:flex-start;
+    gap:30px;
+}
+.edge__column{
+    flex: 0 1 25%;
+}
+.column__title{
+    display: block;
+    text-transform: uppercase;
+
+    font-weight: $font-weight-title;
+    line-height: $line-height-submain;
+}
+.edge__column .column__text{
+    display: block;
+    margin-top: 10px;
+    line-height: $line-height-main;
+
+    color:$color-subtitle;
+}
+.column__icon-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:$color-bg;
+    margin-bottom: 30px;
+    height: 120px;
+}
+.column__icon{
+    height: 70px;
+    width: 70px;
+}
+
+
+// ---------------------------------------------------------------Блок about us---------------------------------------------------------------
+.section__about{
+    padding: 0px 0px 94px 0px;
+}
+.about__box{
+    display: grid;
+
+    grid-template: [start] "title title title" 1fr [row2]
+    [row2] "image image2 image3" [row-end]/  1fr 1fr 1fr;
+
+    gap: 30px;
+}
+
+.about__title{
+    font-size: $font-size-title;
+    font-weight: $font-weight-title;
+    line-height: $line-height-submain;
+    text-align: center;
+
+    margin: 0px 0px 50px 0px;
+
+    grid-area: title;
+}
+
+.about__column{
+    position: relative;
+
+    & .img{
+        object-fit: cover;
+        margin: 0;
+        width: 100%;
+    }
+}
+
+.about__image{
+    grid-area: image;
+}
+.about__image2{
+    grid-area: image2;
+}
+.about__image3{
+    grid-area: image3;
+}
+
+.about__column-text{
+    font-weight: $font-weight-title;
+    line-height:$line-height-main;
+    text-transform: uppercase;
+    text-align: center;
+    color: $color-white;
+    padding-top: 27px;
+    padding-bottom: 27px;
+
+    background-color: rgba(47, 48, 58, 0.8); ;
+
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    bottom:0;
+    z-index: 2;
+}
+
+
+// ---------------------------------------------------------------Блок team---------------------------------------------------------------
+.team{
+    background-color:$color-bg;
+    padding: 94px 0px;
+}
+// Заголовок
+.team__title{
+    font-size: $font-size-title;
+    font-weight: $font-weight-title;
+    line-height: $line-height-submain;
+    text-align: center;
+
+    grid-area: title;
+}
+// Список
+.team__list{
+    display: grid;
+
+    grid-template: 1fr/ repeat(4, 1fr); ;
+    gap: 30px;
+
+    margin-top: 50px;
+}
+// Настройка колонок
+.team__column{
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 25%;
+
+    border-radius: 0px 0px 4px 4px;
+    background-color: $color-white;
+    box-shadow: 0px 2px 1px  rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 1px 2px  rgba(0, 0, 0, 0.14);
+    box-shadow: 0px 1px 3px  rgba(0, 0, 0, 0.12);
+}
+
+.team__image{
+    margin-bottom: 30px;
+    object-fit: cover;
+}
+.team__name{
+    color:$color-title;
+    font-size: $font-size-subtitle;
+    font-weight: $font-weight-subtitle;
+    line-height: $line-height-submain;
+    text-align: center;
+    padding-bottom: 10px;
+}
+.team__position{
+    font-size: $font-size-subtitle;
+    line-height: $line-height-submain;
+    text-align: center;
+    color: $color-subtitle;
+}
+// Ссылки
+.team__social{
+    margin: 16px 0px 30px 0px;
+}
+
+
+// ---------------------------------------------------------------Блок client---------------------------------------------------------------
+.section__client{
+    padding: 94px 0px;
+}
+// Заголовок
+.client__title{
+    font-weight: $font-weight-title;
+    font-size: $font-size-title;
+    line-height: $line-height-submain;
+    text-align: center;
+}
+// Блоки
+.client__list{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+.client__link{
+    fill:$color-unactive-svg;
+
+    &:hover{
+        fill:$color-brand;
+    }
+}
+.client__link-box{
+    width: 170px;
+    height: 92px;
+    border: 1px solid $color-unactive-svg;
+    border-radius:4px;
+}
+
+
+// ---------------------------------------------------------------Блок footer---------------------------------------------------------------
+.footer{
+    background-color:$color-footer-bg;
+}
+.footer__container{
+    display: flex;
+    align-items:center;
+    justify-content: flex-start;
+    align-items:flex-start;
+    justify-content: space-between;
+}
+.footer__box{
+    padding: 60px 0px;
+}
+// Лого
+.footer__logo{
+    display: block;
+    font-style: normal;
+    color: $color-white;
+    margin-bottom: 20px;
+}
+// Адресс + контакты
+.adress__item{
+    line-height:$line-height-main;
+    font-weight: 400;
+
+    display: block;
+    font-style: normal;
+
+    & p{
+        color: $color-white;
+    }
+
+    & a{
+        color:$color-subtitle;
+
+        transition: $animation;
+    }
+
+    & a:hover, & a:focus{
+        fill: $color-brand;
+        color: $color-brand;
+    }
+
+    &:not(:last-child){
+        margin-bottom: 9px;
+        }
+}
+// social
+.footer__social-block{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items:stretch;
+
+    margin-left: 107px;
+    padding-top: 72px;
+}
+.footer__social-title{
+    font-weight: $font-weight-title;
+    line-height: $line-height-submain;
+    text-transform: uppercase;
+    color:$color-white;
+}
+.footer__social{
+    margin-top: 20px;
+    gap: 10px;
+}
+.footer__social-button{
+    background-color:rgb(255, 255, 255, 0.1);
+    fill: $color-white;
+}
+// Форма
+.footer__form-block{
+    margin-left: 93px;
+    padding-top: 72px;
+}
+.footer__form-title{
+    font-weight: $font-weight-title;
+    line-height: $line-height-submain;
+    text-transform: uppercase;
+    color:$color-white;
+}
+.footer__form{
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+.footer__form-mail{
+    border-radius: 4px;
+    width: 358px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color:rgba(33, 150, 243, 0);
+    padding: 15px;
+
+    &:focus{
+        color:$color-white;
+    }
+}
+.footer__form-button{
+    background-color: $color-brand;
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+}
+.footer-button__text{
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    color: $color-white;
+    line-height: 1.87;
+    text-align: center;
+}
+.footer-button__mail-icon{
+    display: block;
+}
+
+
+// ---------------------------------------------------------------Блок modal---------------------------------------------------------------
+// Кнопка main
+.backdrop{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2)
+}
+.backdrop.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+.modal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    min-height: 528px;
+    min-width: 581px;
+    padding: 15px;
+
+    background-color: $color-white;
+}
+.modal__close-button{
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    background: none;
+    border: none;
+}
+// Модальное окно
+.modal__container{
+    max-width: 448px;
+    box-sizing:content-box;
+    margin: 0px auto;
+}
+.modal__title{
+    font-size: 20px;
+    font-weight: $font-weight-title;
+    line-height: $line-height-submain;
+    text-align: center;
+    padding-bottom: 12px;
+
+    margin-top: 40px;
+}
+.modal__form-field:not(:first-child){
+    margin-top: 10px;
+}
+.modal__form-label{
+    font-size: 12px;
+    font-weight: 400;
+    line-height: $line-height-submain;
+    color:$color-subtitle;
+}
+.modal__input-box{
+    position: relative;
+    margin-top: 4px;
+}
+.modal__input-icon{
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+}
+.modal__textarea{
+    height: auto;
+    resize: none;
+
+    padding: 12px 16px;
+}
+// Лицензия
+.modal-form__check-field{
+    margin-top: 20px;
+}
+.modal-form__circs {
+    display: flex;
+    align-items: center;
+
+    font-weight: 400;
+    line-height: $line-height-main;
+    color: $color-subtitle;
+}
+.modal-form__check{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    position: absolute;
+}
+.modal-form__check-icon{
+    display: inline-block;
+    width: 16px;
+    height: 15px;
+    
+    background-repeat: no-repeat;
+    background-image: $modal-unactive-check;
+
+    margin-left: 15px;
+    margin-right: 7px;
+}
+.modal-form__check:checked + .modal-form__check-icon{
+    background-repeat: no-repeat;
+    background-image: $modal-active-check;
+    background-color: $color-brand;
+    background-size:cover;
+    border-radius: 3px;
+}
+.modal-form__circs-link {
+    font-weight: 400;
+    line-height: $line-height-main;
+    color:$color-brand;
+    text-decoration: underline;
+    margin-left: 4px;
+}
+// Модальная кнопка
+.modal-form__button{
+    display: block;
+    
+    margin: 30px auto 40px auto;
+    padding: 10px 52px;
+}
+
+
+// -------------------------------------------------------------Блок portfolio main---------------------------------------------------------------
+.main-portfolio__container{
+    padding: 0px 0px 90px 0px;
+}
+// Кнопки фильтры
+.filter__block{
+    margin: 94px 0px 50px 0px;
+}
+.filter__list{
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+.filter__button{
+    display: block;
+    padding: 6px 22px;
+
+    transition: $animation;
+}
+
+// пункты портфолио
+.category__list{
+    display: grid;
+
+    grid-template: repeat(3,1fr)/repeat(3,1fr);
+    gap: 30px;
+    padding: 0px 15px;
+}
+.category__sign{
+    border-right: 1px solid rgb(238, 238, 238);
+    border-bottom: 1px solid rgb(238, 238, 238);
+    border-left: 1px solid rgb(238, 238, 238);
+    padding: 20px 24px;
+}
+.category__column{
+    transition: $animation;
+
+    &:hover{
+        box-shadow: 1px 4px 6px  rgba(0, 0, 0, 0.16);
+        box-shadow: 0px 5px 6px  rgba(0, 0, 0, 0.06);
+        box-shadow: 2px 7px 4px  rgba(0, 0, 0, 0.12);
+    }
+}
+// Текст
+.sign__title{
+    font-size: 18px;
+    font-weight: $font-weight-title;
+    line-height: 2;
+    color: $color-title;
+
+    margin-bottom: 4px;
+}
+.sign__subtitle{
+    font-size: $font-size-subtitle;
+    line-height: 1.87;
+    color: $color-subtitle;
+}
+
+// Карточки портфолио
+.category__wrapper{
+    position: relative;
+    overflow: hidden;
+}
+.category__hover-box{
+    position: absolute;
+    display: block;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.55;
+    letter-spacing: 0.54px;
+    color:$color-white;
+    padding: 63px 24px;
+    background-color:$hover-category-box;
+
+    transform: translateY(100%);
+    transition: $animation;
+}
+
+.category__column:hover .category__hover-box{
+    transform: translateY(0%); 
+    animation: slideUp 250ms ease; 
+} 
+@keyframes slideUp {
+    0% {
+    transform: translateY(100%);
+    }
+    100% {
+    transform: translateY(0);
+    }
+}
