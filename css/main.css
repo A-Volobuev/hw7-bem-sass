@@ -173,7 +173,7 @@ body {
 
 .main {
   padding: 200px 0px 210px 0px;
-  background-image: url(/homework/hw7/images/bg.webp);
+  background-image: url(../images/bg.webp);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
